@@ -37,7 +37,7 @@ def craft():
 def main():
     for _ in range(4):
         access_remote_inv()
-        time.sleep(0.2)
+        time.sleep(0.5)
         craft()
         time.sleep(0.2)
         close_remote_inv()
