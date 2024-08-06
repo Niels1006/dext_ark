@@ -1,9 +1,10 @@
 import time
-
+import multiprocessing
 import pyautogui
+from pynput import keyboard
 
-CHEM_BENCH_TIME = 0.35
-FABRICATOR_TIME = 0.2
+CHEM_BENCH_TIME = 0.36
+FABRICATOR_TIME = 0.21
 
 SPARK_POWDER = (1289, 371)
 GUN_POWDER = (1568, 370)
@@ -43,8 +44,8 @@ def craft(items):
 
 def main():
     for data in [
-        {'key': 'a', 'items': [SPARK_POWDER, GUN_POWDER], "iters": 5, "sleep_time": CHEM_BENCH_TIME},
-        {'key': 'd', 'items': [ARB], "iters": 4, "sleep_time": FABRICATOR_TIME}
+        {'key': 'a', 'items': [SPARK_POWDER, GUN_POWDER], "iters": 100, "sleep_time": CHEM_BENCH_TIME},
+        {'key': 'd', 'items': [ARB], "iters": 83, "sleep_time": FABRICATOR_TIME}
     ]:
         for _ in range(data["iters"]):
             access_remote_inv()
@@ -60,6 +61,26 @@ def main():
         time.sleep(0.2)
 
 
+def on_press(key):
+    try:
+        if key.char == 'q':
+            thread.terminate()
+            return False
+    except AttributeError:
+        pass
+
+
+def test():
+    while True:
+        print('test')
+        time.sleep(0.5)
+
+
 if __name__ == '__main__':
     time.sleep(5)
-    main()
+
+    thread = multiprocessing.Process(target=main)
+    thread.start()
+
+    with keyboard.Listener(on_press=on_press) as listener:
+        listener.join()
