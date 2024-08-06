@@ -42,7 +42,10 @@ def craft(items):
 
 
 def main():
-    for data in [{'key': 'a', 'items': [SPARK_POWDER, GUN_POWDER], "iters": 20}, {'key': 'd', 'items': [ARB], "iters": 17}]:
+    for data in [
+        {'key': 'a', 'items': [SPARK_POWDER, GUN_POWDER], "iters": 20, "sleep_time": CHEM_BENCH_TIME},
+        {'key': 'd', 'items': [ARB], "iters": 17, "sleep_time": FABRICATOR_TIME}
+    ]:
         for _ in range(data["iters"]):
             access_remote_inv()
             time.sleep(0.5)
@@ -50,7 +53,7 @@ def main():
             time.sleep(0.2)
             close_remote_inv()
             time.sleep(0.2)
-            walk(data["key"], CHEM_BENCH_TIME)
+            walk(data["key"], data["sleep_time"])
             time.sleep(0.2)
 
         pyautogui.press('c')
