@@ -36,17 +36,18 @@ jobs:
           path: dist/autocrafting.exe
 
       - name: Get Current Date and Time
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
+        id: get_date
+        run: echo "RELEASE_TAG=$(date +'%Y%m%d-%S')" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         id: create_release
+        run : echo ${{ env.RELEASE_TAG }}
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.date.outputs.date }}
-          release_name: Release ${{ steps.date.outputs.date }}
+          tag_name: ${{ env.RELEASE_TAG }}
+          release_name: Release ${{ env.RELEASE_TAG }}
           body: |
             Release created by GitHub Actions
           draft: false
