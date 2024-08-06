@@ -27,7 +27,7 @@ def craft():
     time.sleep(0.2)
     pyautogui.click(PULL_BUTTON)
     time.sleep(0.2)
-    pyautogui.move(SPARK_POWDER)
+    pyautogui.click(SPARK_POWDER)
     time.sleep(0.2)
     for _ in range(10):
         pyautogui.press('a')
