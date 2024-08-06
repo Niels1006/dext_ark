@@ -2,7 +2,7 @@ import time
 
 import pyautogui
 
-CHEM_BENCH_TIME = 0.32
+CHEM_BENCH_TIME = 0.37
 FABRICATOR_TIME = 0.25
 
 SPARK_POWDER = (1289, 371)
