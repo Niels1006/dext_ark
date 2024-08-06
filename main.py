@@ -9,15 +9,17 @@ PULL_BUTTON = (1440, 36)
 
 
 def walk():
-    pyautogui.keyDown('w')
+    pyautogui.keyDown('a')
     time.sleep(SIDEWALK_TIME)
-    pyautogui.keyUp('w')
+    pyautogui.keyUp('a')
 
 
 def access_remote_inv():
-    pyautogui.keyDown('f')
-    time.sleep(1)
-    pyautogui.keyUp('f')
+    pyautogui.press('f')
+
+
+def close_remote_inv():
+    pyautogui.press('esc')
 
 
 def craft():
@@ -25,16 +27,21 @@ def craft():
     time.sleep(0.2)
     pyautogui.click(PULL_BUTTON)
     time.sleep(0.2)
+    pyautogui.move(SPARK_POWDER)
+    time.sleep(0.2)
     for _ in range(10):
-        pyautogui.keyDown('a')
+        pyautogui.press('a')
         time.sleep(0.2)
-        pyautogui.keyUp('a')
 
 
 def main():
     for _ in range(4):
         access_remote_inv()
+        time.sleep(0.5)
         craft()
+        time.sleep(0.5)
+        close_remote_inv()
+        time.sleep(0.5)
         walk()
 
 
