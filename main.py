@@ -2,18 +2,22 @@ import time
 
 import pyautogui
 
-SIDEWALK_TIME = 0.15
-SPARK_POWDER = (1381, 371)
-GUN_POWDER = (1566, 370)
+CHEM_BENCH_TIME = 0.3
+FABRICATOR_TIME = 0.37
+
+SPARK_POWDER = (1289, 371)
+GUN_POWDER = (1568, 370)
+ARB = (1477, 645)
+
 PULL_BUTTON = (1440, 36)
 
 ITERATIONS = 100
 
 
-def walk():
-    pyautogui.keyDown('a')
-    time.sleep(SIDEWALK_TIME)
-    pyautogui.keyUp('a')
+def walk(key, time_):
+    pyautogui.keyDown(key)
+    time.sleep(time_)
+    pyautogui.keyUp(key)
 
 
 def access_remote_inv():
@@ -24,8 +28,8 @@ def close_remote_inv():
     pyautogui.press('esc')
 
 
-def craft():
-    for item in [SPARK_POWDER, GUN_POWDER]:
+def craft(items):
+    for item in items:
         pyautogui.click(item)
         time.sleep(0.2)
         pyautogui.click(PULL_BUTTON)
@@ -38,14 +42,19 @@ def craft():
 
 
 def main():
-    for _ in range(ITERATIONS):
-        access_remote_inv()
-        time.sleep(0.5)
-        craft()
+    for data in [{'key': 'a', 'items': [SPARK_POWDER, GUN_POWDER], "iters": 20}, {'key': 'd', 'items': [ARB], "iters": 17}]:
+        for _ in range(data["iters"]):
+            access_remote_inv()
+            time.sleep(0.5)
+            craft(data['items'])
+            time.sleep(0.2)
+            close_remote_inv()
+            time.sleep(0.2)
+            walk(data["key"], CHEM_BENCH_TIME)
+            time.sleep(0.2)
+
+        pyautogui.press('c')
         time.sleep(0.2)
-        close_remote_inv()
-        time.sleep(0.2)
-        walk()
 
 
 if __name__ == '__main__':
