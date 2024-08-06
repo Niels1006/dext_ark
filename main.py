@@ -2,8 +2,8 @@ import time
 
 import pyautogui
 
-CHEM_BENCH_TIME = 0.3
-FABRICATOR_TIME = 0.37
+CHEM_BENCH_TIME = 0.32
+FABRICATOR_TIME = 0.25
 
 SPARK_POWDER = (1289, 371)
 GUN_POWDER = (1568, 370)
@@ -43,12 +43,12 @@ def craft(items):
 
 def main():
     for data in [
-        {'key': 'a', 'items': [SPARK_POWDER, GUN_POWDER], "iters": 20, "sleep_time": CHEM_BENCH_TIME},
-        {'key': 'd', 'items': [ARB], "iters": 17, "sleep_time": FABRICATOR_TIME}
+        {'key': 'a', 'items': [SPARK_POWDER, GUN_POWDER], "iters": 10, "sleep_time": CHEM_BENCH_TIME},
+        {'key': 'd', 'items': [ARB], "iters": 8, "sleep_time": FABRICATOR_TIME}
     ]:
         for _ in range(data["iters"]):
             access_remote_inv()
-            time.sleep(0.5)
+            time.sleep(0.6)
             craft(data['items'])
             time.sleep(0.2)
             close_remote_inv()
