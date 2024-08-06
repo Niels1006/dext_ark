@@ -7,6 +7,8 @@ SPARK_POWDER = (1381, 371)
 GUN_POWDER = (1566, 370)
 PULL_BUTTON = (1440, 36)
 
+ITERATIONS = 100
+
 
 def walk():
     pyautogui.keyDown('a')
@@ -36,7 +38,7 @@ def craft():
 
 
 def main():
-    for _ in range(4):
+    for _ in range(ITERATIONS):
         access_remote_inv()
         time.sleep(0.5)
         craft()
