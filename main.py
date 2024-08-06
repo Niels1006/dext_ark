@@ -31,17 +31,17 @@ def craft():
     time.sleep(0.2)
     for _ in range(10):
         pyautogui.press('a')
-        time.sleep(0.2)
+        time.sleep(0.1)
 
 
 def main():
     for _ in range(4):
         access_remote_inv()
-        time.sleep(0.5)
+        time.sleep(0.2)
         craft()
-        time.sleep(0.5)
+        time.sleep(0.2)
         close_remote_inv()
-        time.sleep(0.5)
+        time.sleep(0.2)
         walk()
 
 
