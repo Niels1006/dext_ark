@@ -2,7 +2,7 @@ import time
 
 import pyautogui
 
-SIDEWALK_TIME = 0.3
+SIDEWALK_TIME = 0.2
 SPARK_POWDER = (1381, 371)
 GUN_POWDER = (1566, 370)
 PULL_BUTTON = (1440, 36)
