@@ -37,10 +37,7 @@ jobs:
 
       - name: Get Current Date and Time
         id: get_date
-        run: |
-          echo "RELEASE_TAG=$(date +'%Y%m%d-%S')" >> $GITHUB_ENV
-          echo ${{ env.RELEASE_TAG }}
-
+        run: echo "RELEASE_TAG=$(date +'%Y%m%d-%S')" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         id: create_release
