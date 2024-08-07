@@ -62,8 +62,7 @@ jobs:
           name: Release ${{ env.CURRENT_DATE }}
           draft: false
           prerelease: false
-          with:
-            files: dist/main
+          files: dist/main
 
 #      - name: Upload release asset
 #        uses: actions/upload-release-asset@v1
