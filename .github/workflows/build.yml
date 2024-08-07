@@ -48,14 +48,18 @@ jobs:
           name: autocrafting-executable
           path: dist/
 
+      - name: Get current date
+        id: get_date
+        run: echo "CURRENT_DATE=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: release-${{ env.CURRENT_DATE }}
+          release_name: Release ${{ env.CURRENT_DATE }}
           draft: false
           prerelease: false
 
