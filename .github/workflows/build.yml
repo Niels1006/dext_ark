@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: autocrafting-executable
-          path: dist/autocrafting.exe
+          path: dist/
 
   release:
     runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: autocrafting-executable
-          path: dist/autocrafting.exe
+          path: dist/
 
       - name: Create release
         id: create_release
