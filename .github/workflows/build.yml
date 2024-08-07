@@ -50,7 +50,7 @@ jobs:
 
       - name: Get current date
         id: get_date
-        run: echo "CURRENT_DATE=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+        run: echo "CURRENT_DATE=$(date +%Y-%m-%d--%H:%M:%S)" >> $GITHUB_ENV
 
       - name: Create release
         id: create_release
@@ -62,7 +62,7 @@ jobs:
           name: Release ${{ env.CURRENT_DATE }}
           draft: false
           prerelease: false
-          files: dist/main
+          files: dist/autocrafting-windows-amd64.exe
 
 #      - name: Upload release asset
 #        uses: actions/upload-release-asset@v1

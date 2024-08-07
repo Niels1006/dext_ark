@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='main',
+    name='autocrafting-windows-amd64',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
